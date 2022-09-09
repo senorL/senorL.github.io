@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>零基础学习c程序（二）</title>
+      <link href="/2022/09/07/%E9%9B%B6%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0c%E7%A8%8B%E5%BA%8F%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
+      <url>/2022/09/07/%E9%9B%B6%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0c%E7%A8%8B%E5%BA%8F%EF%BC%88%E4%BA%8C%EF%BC%89/</url>
+      
+        <content type="html"><![CDATA[<h1 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h1><h2 id="内存"><a href="#内存" class="headerlink" title="内存"></a>内存</h2><p><a href="https://imgse.com/i/vHdLrV"><img src="https://s1.ax1x.com/2022/09/07/vHdLrV.png" alt="vHdLrV.png"></a></p><h2 id="变量-：先定义再使用"><a href="#变量-：先定义再使用" class="headerlink" title="变量 ：先定义再使用"></a>变量 ：先定义再使用</h2><p>（变量类型）（变量标识符）<br>int   max<br>int   max = 0 <em>赋予初始值</em></p><p><a href="https://imgse.com/i/vHdObT"><img src="https://s1.ax1x.com/2022/09/07/vHdObT.png" alt="vHdObT.png"></a></p><h3 id="整数型"><a href="#整数型" class="headerlink" title="整数型"></a>整数型</h3>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>零基础学习C程序（一）</title>
+      <link href="/2022/09/01/%E9%9B%B6%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0C%E7%A8%8B%E5%BA%8F%EF%BC%88%E4%B8%80%EF%BC%89/"/>
+      <url>/2022/09/01/%E9%9B%B6%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0C%E7%A8%8B%E5%BA%8F%EF%BC%88%E4%B8%80%EF%BC%89/</url>
+      
+        <content type="html"><![CDATA[<h1 id="简单的程序"><a href="#简单的程序" class="headerlink" title="简单的程序"></a>简单的程序</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    return()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="定义变量，输出数据"><a href="#定义变量，输出数据" class="headerlink" title="定义变量，输出数据"></a>定义变量，输出数据</h2><p>int 定义整数型变量<br>定义变量； 由前到后的顺序是类型、名称和初始值。 <strong>一定要赋予初始值</strong><br>cout 输出命令<br>endl 换行<br>&lt;&lt; 分隔符<br>文字需要放在 “” 中，**使用英文字符**<br>cin &gt;&gt; 输入命令<br>, 分隔变量<br>float 实数型<br><em>语句顺序书写，称之为顺序结构</em>  </p><h3 id="分支结构"><a href="#分支结构" class="headerlink" title="分支结构"></a>分支结构</h3><p><em>分支语句（if语句）</em><br>if else<br>char 定义字符型变量，用于存储<strong>一个</strong>字符，使用单引号<br>！=  不等于<br>== 判断语句中的等于<br>=代表赋值  ==代表是否相等  </p><h3 id="循环结构"><a href="#循环结构" class="headerlink" title="循环结构"></a>循环结构</h3><p>循环语句（for语句）<br>i++ 的含义是 i=i+1 ， i–含义是i=i-1<br>% 模，用来取余运算<br>if 两行相连，代表同时成立</p><h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">char a[10] = &#123;&#x27;a&#x27;,&#x27;b&#x27;,&#x27;c&#x27;,&#x27;d&#x27;,&#x27;e&#x27;,&#x27;f&#x27;,&#x27;g&#x27;,&#x27;h&#x27;,&#x27;i&#x27;,&#x27;j&#x27;&#125;;</span><br></pre></td></tr></table></figure><p>a为数组名称 [10]代表共有十个元素<br><a href="https://imgse.com/i/v5sgY9"><img src="https://s1.ax1x.com/2022/09/01/v5sgY9.png" alt="示例图片.png"></a><br><em>注意编号从是0开始</em><br>// 注释 编译器会忽略掉注释，<strong>为了保证可读性，一定要有注释</strong><br>break 终止循环  </p><h1 id="什么样的程序是好程序"><a href="#什么样的程序是好程序" class="headerlink" title="什么样的程序是好程序"></a>什么样的程序是好程序</h1><p><a href="https://imgse.com/i/v56CDK"><img src="https://s1.ax1x.com/2022/09/01/v56CDK.png" alt="v56CDK.png"></a></p><p><strong>没有想到解决方案的时候，不要急于动手去写程序</strong><br><a href="https://imgse.com/i/v5g8cn"><img src="https://s1.ax1x.com/2022/09/01/v5g8cn.png" alt="v5g8cn.png"></a><br><a href="https://imgse.com/i/v5gGXq"><img src="https://s1.ax1x.com/2022/09/01/v5gGXq.png" alt="v5gGXq.png"></a></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>hexo d命令错误的解决方法</title>
+      <link href="/2022/08/31/hexo-d%E5%91%BD%E4%BB%A4%E9%94%99%E8%AF%AF%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/"/>
+      <url>/2022/08/31/hexo-d%E5%91%BD%E4%BB%A4%E9%94%99%E8%AF%AF%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</url>
+      
+        <content type="html"><![CDATA[<h2 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h2><h3 id="确认hexo-deployer-git的模块是否下载成功"><a href="#确认hexo-deployer-git的模块是否下载成功" class="headerlink" title="确认hexo-deployer-git的模块是否下载成功"></a>确认hexo-deployer-git的模块是否下载成功</h3><p>复制下面这行代码到命令行。</p><p>‘npm install hexo-deployer-git –save’</p><h2 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h2><h3 id="修改-config-yml文件"><a href="#修改-config-yml文件" class="headerlink" title="修改 _config.yml文件"></a>修改 _config.yml文件</h3><p><strong>注意</strong> 我使用win11系统打开该文件时，在type后面有单引号，应将单引号删去，也可以直接复制下面的代码。<br>1.将GitHub配置地址的方式从http改为ssh<br>2.将branch后的master换成main</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git </span><br><span class="line">  repository: git@github.com:(your name)/(your name).github.io.git</span><br><span class="line">  branch: main </span><br></pre></td></tr></table></figure><h2 id="方法三"><a href="#方法三" class="headerlink" title="方法三"></a>方法三</h2><h3 id="在命令行中写入你的github名称与注册邮箱"><a href="#在命令行中写入你的github名称与注册邮箱" class="headerlink" title="在命令行中写入你的github名称与注册邮箱"></a>在命令行中写入你的github名称与注册邮箱</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git config --global user.email &quot;xxx&quot;</span><br><span class="line">git config --global user.name &quot;xxx&quot;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>第一篇</title>
+      <link href="/2022/08/29/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/"/>
+      <url>/2022/08/29/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/</url>
+      
+        <content type="html"><![CDATA[<p>8/29  我的第一个个人博客！！！</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+  
+  
+</search>
