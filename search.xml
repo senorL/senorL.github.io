@@ -47,7 +47,7 @@
       <link href="/2022/08/29/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/"/>
       <url>/2022/08/29/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/</url>
       
-        <content type="html"><![CDATA[<p>8/29  我的第一个个人博客！！！</p><p>$$f(x)=\int_{-\infty}^{\infty}\hat{f}(\xi)e^{2\pi i \xi x}d\xi</p>]]></content>
+        <content type="html"><![CDATA[<p>8/29  我的第一个个人博客！！！</p><script type="math/tex; mode=display">f(x)=\int_{-\infty}^{\infty}\hat{f}(\xi)e^{2\pi i \xi x}d\xi</script><p>s</p>]]></content>
       
       
       
