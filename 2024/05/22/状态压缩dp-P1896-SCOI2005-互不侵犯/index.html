@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="[SCOI2005] 互不侵犯题目描述在 $N \times N$ 的棋盘里面放 $K$ 个国王，使他们互不攻击，共有多少种摆放方案。国王能攻击到它上下左右，以及左上左下右上右下八个方向上附近的各一个格子，共 $8$ 个格子。 状态压缩dp考虑在一行内，1代表放国王，0代表不放国王，用一个二进制数就可以表示出一行的状态，如下图：那么在长为n的行中，一共有$2^n$种状态。如何判断两个国王是否不挨着">
+<meta property="og:type" content="article">
+<meta property="og:title" content="状态压缩dp P1896 [SCOI2005] 互不侵犯">
+<meta property="og:url" content="http://example.com/2024/05/22/%E7%8A%B6%E6%80%81%E5%8E%8B%E7%BC%A9dp-P1896-SCOI2005-%E4%BA%92%E4%B8%8D%E4%BE%B5%E7%8A%AF/index.html">
+<meta property="og:site_name" content="senor">
+<meta property="og:description" content="[SCOI2005] 互不侵犯题目描述在 $N \times N$ 的棋盘里面放 $K$ 个国王，使他们互不攻击，共有多少种摆放方案。国王能攻击到它上下左右，以及左上左下右上右下八个方向上附近的各一个格子，共 $8$ 个格子。 状态压缩dp考虑在一行内，1代表放国王，0代表不放国王，用一个二进制数就可以表示出一行的状态，如下图：那么在长为n的行中，一共有$2^n$种状态。如何判断两个国王是否不挨着">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s21.ax1x.com/2024/05/23/pkQkH6P.png">
+<meta property="og:image" content="https://s21.ax1x.com/2024/05/23/pkQkbOf.png">
+<meta property="article:published_time" content="2024-05-22T14:09:37.000Z">
+<meta property="article:modified_time" content="2024-05-23T06:34:48.144Z">
+<meta property="article:author" content="senor">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s21.ax1x.com/2024/05/23/pkQkH6P.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>状态压缩dp P1896 [SCOI2005] 互不侵犯</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.2"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="顶部" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/senorl">项目</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="下一篇" href="/2023/08/20/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AC%94%E8%AE%B0/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2024/05/22/%E7%8A%B6%E6%80%81%E5%8E%8B%E7%BC%A9dp-P1896-SCOI2005-%E4%BA%92%E4%B8%8D%E4%BE%B5%E7%8A%AF/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2024/05/22/%E7%8A%B6%E6%80%81%E5%8E%8B%E7%BC%A9dp-P1896-SCOI2005-%E4%BA%92%E4%B8%8D%E4%BE%B5%E7%8A%AF/&text=状态压缩dp P1896 [SCOI2005] 互不侵犯"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2024/05/22/%E7%8A%B6%E6%80%81%E5%8E%8B%E7%BC%A9dp-P1896-SCOI2005-%E4%BA%92%E4%B8%8D%E4%BE%B5%E7%8A%AF/&title=状态压缩dp P1896 [SCOI2005] 互不侵犯"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2024/05/22/%E7%8A%B6%E6%80%81%E5%8E%8B%E7%BC%A9dp-P1896-SCOI2005-%E4%BA%92%E4%B8%8D%E4%BE%B5%E7%8A%AF/&is_video=false&description=状态压缩dp P1896 [SCOI2005] 互不侵犯"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=状态压缩dp P1896 [SCOI2005] 互不侵犯&body=Check out this article: http://example.com/2024/05/22/%E7%8A%B6%E6%80%81%E5%8E%8B%E7%BC%A9dp-P1896-SCOI2005-%E4%BA%92%E4%B8%8D%E4%BE%B5%E7%8A%AF/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2024/05/22/%E7%8A%B6%E6%80%81%E5%8E%8B%E7%BC%A9dp-P1896-SCOI2005-%E4%BA%92%E4%B8%8D%E4%BE%B5%E7%8A%AF/&title=状态压缩dp P1896 [SCOI2005] 互不侵犯"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2024/05/22/%E7%8A%B6%E6%80%81%E5%8E%8B%E7%BC%A9dp-P1896-SCOI2005-%E4%BA%92%E4%B8%8D%E4%BE%B5%E7%8A%AF/&title=状态压缩dp P1896 [SCOI2005] 互不侵犯"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2024/05/22/%E7%8A%B6%E6%80%81%E5%8E%8B%E7%BC%A9dp-P1896-SCOI2005-%E4%BA%92%E4%B8%8D%E4%BE%B5%E7%8A%AF/&title=状态压缩dp P1896 [SCOI2005] 互不侵犯"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2024/05/22/%E7%8A%B6%E6%80%81%E5%8E%8B%E7%BC%A9dp-P1896-SCOI2005-%E4%BA%92%E4%B8%8D%E4%BE%B5%E7%8A%AF/&title=状态压缩dp P1896 [SCOI2005] 互不侵犯"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2024/05/22/%E7%8A%B6%E6%80%81%E5%8E%8B%E7%BC%A9dp-P1896-SCOI2005-%E4%BA%92%E4%B8%8D%E4%BE%B5%E7%8A%AF/&name=状态压缩dp P1896 [SCOI2005] 互不侵犯&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2024/05/22/%E7%8A%B6%E6%80%81%E5%8E%8B%E7%BC%A9dp-P1896-SCOI2005-%E4%BA%92%E4%B8%8D%E4%BE%B5%E7%8A%AF/&t=状态压缩dp P1896 [SCOI2005] 互不侵犯"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SCOI2005-%E4%BA%92%E4%B8%8D%E4%BE%B5%E7%8A%AF"><span class="toc-number">1.</span> <span class="toc-text">[SCOI2005] 互不侵犯</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="toc-number">1.1.</span> <span class="toc-text">题目描述</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%8A%B6%E6%80%81%E5%8E%8B%E7%BC%A9dp"><span class="toc-number">2.</span> <span class="toc-text">状态压缩dp</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B%E4%BB%A3%E7%A0%81"><span class="toc-number">3.</span> <span class="toc-text">示例代码</span></a></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        状态压缩dp P1896 [SCOI2005] 互不侵犯
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">senor</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2024-05-22T14:09:37.000Z" class="dt-published" itemprop="datePublished">2024-05-22</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h1 id="SCOI2005-互不侵犯"><a href="#SCOI2005-互不侵犯" class="headerlink" title="[SCOI2005] 互不侵犯"></a>[SCOI2005] 互不侵犯</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>在 $N \times N$ 的棋盘里面放 $K$ 个国王，使他们互不攻击，共有多少种摆放方案。国王能攻击到它上下左右，以及左上左下右上右下八个方向上附近的各一个格子，共 $8$ 个格子。</p>
+<h1 id="状态压缩dp"><a href="#状态压缩dp" class="headerlink" title="状态压缩dp"></a>状态压缩dp</h1><p>考虑在一行内，1代表放国王，0代表不放国王，用一个二进制数就可以表示出一行的状态，如下图：<br><a target="_blank" rel="noopener" href="https://imgse.com/i/pkQkH6P"><img src="https://s21.ax1x.com/2024/05/23/pkQkH6P.png" alt="pkQkH6P.png"></a><br>那么在长为n的行中，一共有$2^n$种状态。如何判断两个国王是否不挨着呢？这就要用到位运算，只要当前的状态与右移一位的状态与运算等于零就意味着两个国王是不挨着的，即<code>i &amp; (i &gt;&gt; 1)</code>如下：<br><a target="_blank" rel="noopener" href="https://imgse.com/i/pkQkbOf"><img src="https://s21.ax1x.com/2024/05/23/pkQkbOf.png" alt="pkQkbOf.png"></a><br>行内判断后，如何进行行间的判断？试想，下一行只会有三个需要判断的位置，正下方，左下方，右下方，分别对应的移位后进行与运算判断。<br>状态转移方程<code>f[i][j][k]</code>表示前i行已经放了j个国王，第i行的第k状态的方案数，最后应当求和就是总方案数。</p>
+<h1 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h1><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">int</span> n, k;</span><br><span class="line"><span class="type">int</span> s[<span class="number">1</span> &lt;&lt; <span class="number">12</span>];  <span class="comment">// 行状态</span></span><br><span class="line"><span class="type">int</span> num[<span class="number">1</span> &lt;&lt; <span class="number">12</span>]; <span class="comment">// 每个状态的国王数</span></span><br><span class="line"><span class="type">int</span> cnt; <span class="comment">// 每行有多少种可能的状态</span></span><br><span class="line"><span class="type">long</span> <span class="type">long</span> f[<span class="number">12</span>][<span class="number">144</span>][<span class="number">1</span> &lt;&lt; <span class="number">12</span>]; <span class="comment">// 状态方程</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; k;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; (<span class="number">1</span> &lt;&lt; n); i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (!((i &gt;&gt; <span class="number">1</span>) &amp; i))</span><br><span class="line">        &#123;</span><br><span class="line">            s[cnt++] = i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; n; j++)</span><br><span class="line">        &#123;</span><br><span class="line">           num[i] += ((i &gt;&gt; j) &amp; <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    f[<span class="number">0</span>][<span class="number">0</span>][<span class="number">0</span>] = <span class="number">1</span>;                       <span class="comment">// 没有也是一种方案</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n + <span class="number">1</span>; i++)      <span class="comment">// 行，多枚举一行，循环后就不用再相加求和</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt;= k; j++)      <span class="comment">// 国王数</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> a = <span class="number">0</span>; a &lt; cnt; a++) <span class="comment">// 第i行合法状态</span></span><br><span class="line">                <span class="keyword">for</span> (<span class="type">int</span> b = <span class="number">0</span>; b &lt; cnt; b++)</span><br><span class="line">                &#123; <span class="comment">// 第i-1行合法状态</span></span><br><span class="line">                    <span class="type">int</span> c = num[s[a]];</span><br><span class="line">                    <span class="keyword">if</span> ((j &gt;= c) &amp;&amp; !(s[a] &amp; s[b]) &amp;&amp; !((s[a] &gt;&gt; <span class="number">1</span>) &amp; s[b]) &amp;&amp; !((s[a] &lt;&lt; <span class="number">1</span>) &amp; s[b]))</span><br><span class="line">                        f[i][j][a] += f[i - <span class="number">1</span>][j - c][b];</span><br><span class="line">                &#125;</span><br><span class="line">    cout &lt;&lt; f[n + <span class="number">1</span>][k][<span class="number">0</span>] &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">首页</a></li>
+        
+          <li><a href="/about/">关于</a></li>
+        
+          <li><a href="/archives/">归档</a></li>
+        
+          <li><a target="_blank" rel="noopener" href="http://github.com/senorl">项目</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SCOI2005-%E4%BA%92%E4%B8%8D%E4%BE%B5%E7%8A%AF"><span class="toc-number">1.</span> <span class="toc-text">[SCOI2005] 互不侵犯</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="toc-number">1.1.</span> <span class="toc-text">题目描述</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%8A%B6%E6%80%81%E5%8E%8B%E7%BC%A9dp"><span class="toc-number">2.</span> <span class="toc-text">状态压缩dp</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B%E4%BB%A3%E7%A0%81"><span class="toc-number">3.</span> <span class="toc-text">示例代码</span></a></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2024/05/22/%E7%8A%B6%E6%80%81%E5%8E%8B%E7%BC%A9dp-P1896-SCOI2005-%E4%BA%92%E4%B8%8D%E4%BE%B5%E7%8A%AF/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2024/05/22/%E7%8A%B6%E6%80%81%E5%8E%8B%E7%BC%A9dp-P1896-SCOI2005-%E4%BA%92%E4%B8%8D%E4%BE%B5%E7%8A%AF/&text=状态压缩dp P1896 [SCOI2005] 互不侵犯"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2024/05/22/%E7%8A%B6%E6%80%81%E5%8E%8B%E7%BC%A9dp-P1896-SCOI2005-%E4%BA%92%E4%B8%8D%E4%BE%B5%E7%8A%AF/&title=状态压缩dp P1896 [SCOI2005] 互不侵犯"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2024/05/22/%E7%8A%B6%E6%80%81%E5%8E%8B%E7%BC%A9dp-P1896-SCOI2005-%E4%BA%92%E4%B8%8D%E4%BE%B5%E7%8A%AF/&is_video=false&description=状态压缩dp P1896 [SCOI2005] 互不侵犯"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=状态压缩dp P1896 [SCOI2005] 互不侵犯&body=Check out this article: http://example.com/2024/05/22/%E7%8A%B6%E6%80%81%E5%8E%8B%E7%BC%A9dp-P1896-SCOI2005-%E4%BA%92%E4%B8%8D%E4%BE%B5%E7%8A%AF/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2024/05/22/%E7%8A%B6%E6%80%81%E5%8E%8B%E7%BC%A9dp-P1896-SCOI2005-%E4%BA%92%E4%B8%8D%E4%BE%B5%E7%8A%AF/&title=状态压缩dp P1896 [SCOI2005] 互不侵犯"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2024/05/22/%E7%8A%B6%E6%80%81%E5%8E%8B%E7%BC%A9dp-P1896-SCOI2005-%E4%BA%92%E4%B8%8D%E4%BE%B5%E7%8A%AF/&title=状态压缩dp P1896 [SCOI2005] 互不侵犯"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2024/05/22/%E7%8A%B6%E6%80%81%E5%8E%8B%E7%BC%A9dp-P1896-SCOI2005-%E4%BA%92%E4%B8%8D%E4%BE%B5%E7%8A%AF/&title=状态压缩dp P1896 [SCOI2005] 互不侵犯"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2024/05/22/%E7%8A%B6%E6%80%81%E5%8E%8B%E7%BC%A9dp-P1896-SCOI2005-%E4%BA%92%E4%B8%8D%E4%BE%B5%E7%8A%AF/&title=状态压缩dp P1896 [SCOI2005] 互不侵犯"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2024/05/22/%E7%8A%B6%E6%80%81%E5%8E%8B%E7%BC%A9dp-P1896-SCOI2005-%E4%BA%92%E4%B8%8D%E4%BE%B5%E7%8A%AF/&name=状态压缩dp P1896 [SCOI2005] 互不侵犯&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2024/05/22/%E7%8A%B6%E6%80%81%E5%8E%8B%E7%BC%A9dp-P1896-SCOI2005-%E4%BA%92%E4%B8%8D%E4%BE%B5%E7%8A%AF/&t=状态压缩dp P1896 [SCOI2005] 互不侵犯"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2024
+    senor
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/senorl">项目</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功！");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
